@@ -42,6 +42,16 @@ def criar_diretorio(nome_dir):
     except Exception as e:
         print(f"Erro inesperado: {e}")
 
+def escrever_arquivo(arquivo, conteudo):
+
+    try:
+        with open(arquivo, "a", encoding='utf-8') as e_arquivo:
+            e_arquivo.writelines(conteudo)
+        return print(f"Conteudo adicionado com sucesso")
+    except Exception as e:
+        print(f"Erro inesperado: {e}")
+        
+
 
 def excluir_diretorio(nome_dir):
     try:
