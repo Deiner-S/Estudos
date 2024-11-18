@@ -1,10 +1,7 @@
 from DAOabc import DAO
 
 class DAOpessoa(DAO):
-    def __init__(self):
-        super().__init__()
-
-    self.name = "Pessoa" # type: ignore
+    pass    
 
     def create(self,obj):
         comando = f"""INSERT INTO {self.name} VALUES (:cpf, :nome, :nascimento, :oculos);"""        
