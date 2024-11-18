@@ -49,13 +49,16 @@ try:
                     FOREIGN KEY(propietario) REFERENCES Pessoa(cpf),
                     FOREIGN KEY(marca) References Marca(id)
                     );"""
+    comando7 = """INSERT INTO Pessoa (cpf, nome, nascimento, oculos)
+       VALUES (12345678900, 'João', '2000-01-31', 1);"""
 
     #cursor.execute(comando1)
     #cursor.execute(comando2)
     #cursor.execute(comando3)
     #cursor.execute(comando4)
-    cursor.execute(comando5)
-    cursor.execute(comando6)
+    #cursor.execute(comando5)
+    #cursor.execute(comando6)
+    cursor.execute(comando7)
     
     #Efetivação do comando
     conexao.commit()
