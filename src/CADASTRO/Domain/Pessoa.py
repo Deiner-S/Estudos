@@ -25,6 +25,4 @@ class Pessoa:
     def setOculos(self, new):
         self.oculos = new
     
-    
-    
         
