@@ -1,12 +1,15 @@
 from DAO.DAOabc import DAO
 
-class DAOpessoa(DAO):
-    primaryKey = "cpf"
-    tabela = "Pessoa"        
+class DAOveiculo(DAO):
+    #chave primaria
+    primaryKey = "placa"
+    #nome da tabela
+    tabela = "Veiculo"        
+    
     
     def create(self,obj):
         try:
-            comando = f"""INSERT INTO Pessoa VALUES (:cpf, :nome, :nascimento, :oculos);"""        
+            comando = f"""INSERT INTO {self.tabela} VALUES (:placa, :ano, :cor, :motor, :propietario, :marca);"""        
             self.cursor.execute(comando, vars(obj))
             self.conexao.commit()
             print("Cadastrado com sucesso!")

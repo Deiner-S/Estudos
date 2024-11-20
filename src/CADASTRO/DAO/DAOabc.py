@@ -9,10 +9,12 @@ import sqlite3 as conexao
 #Update
 #Delete
 #
-class DAO(ABC):
-    def __init__(self):
-        self.conexao = conexao.connect("data.bd") 
-        self.cursor = self.conexao.cursor()        
+class DAO(ABC):    
+    primaryKey = ""
+    tabela = ""    
+    conexao = conexao.connect("./data_base.db", detect_types=conexao.PARSE_DECLTYPES) 
+    cursor = conexao.cursor()
+                    
     #   
     #
     #
@@ -24,14 +26,11 @@ class DAO(ABC):
     #
     #
     #  
-    def read(self,cod,table):
+    def read(self,cod):
         try:
-            comando = f"SELECT * FROM {table} WHERE cpf = '{cod}' "
+            comando = f"SELECT * FROM {self.tabela} WHERE {self.primaryKey} = '{cod}' "
             self.cursor.execute(comando)
-            return self.cursor.fetchall()
-        except conexao.DatabaseError:
-            print("Erro de conexão com banco de dados")
-            return False
+            return self.cursor.fetchall()        
         except Exception as e:
             print(f"Erro inesperado: {e}")
             return False
@@ -39,16 +38,13 @@ class DAO(ABC):
     #
     #
     #     
-    def update(self,atributo,table):
+    def update(self,chave,coluna,update):
         try:
-            comando = f"""UPDATE {table} SET {atributo}"""
-            print("Dados atualizados com sucesso!")
-            self.cursor.execute(comando)
+            comando = f"""UPDATE {self.tabela} SET {coluna}= ? WHERE {self.primaryKey}={chave};"""           
+            self.cursor.execute(comando, (update,))
             self.conexao.commit()
-            return True
-        except conexao.DatabaseError:
-            print("Erro de conexão com banco de dados")
-            return False
+            print("Dados atualizados com sucesso!")
+            return True            
         except Exception as e:
             print(f"Erro inesperado: {e}")
             return False
@@ -57,5 +53,14 @@ class DAO(ABC):
     #
     #
     # 
-    def delete(self):
-        comando = f""""""
+    def delete(self,cpf):
+        self.conexao.execute("PRAGMA foreign_keys = on")
+        try:
+            comando = f'''DELETE FROM {self.tabela} WHERE {self.primaryKey}= {cpf};'''
+            self.cursor.execute(comando)
+            self.conexao.commit()
+            print("Cadastro removido")
+            return True
+        except Exception as e:
+            print(f"Erro inesperado: {e}")
+            return False
