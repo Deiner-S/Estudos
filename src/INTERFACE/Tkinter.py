@@ -60,6 +60,7 @@ def entry():
 
     def mostrar_nomes():
         print("Nome: %s\nSobrenome: %s" % (e1.get(), e2.get()))
+
     janela = tk.Tk()
     janela.title("Aplicação GUI com o Widget Entry")
     tk.Label(janela,text="Nome").grid(row=0)
