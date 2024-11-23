@@ -24,5 +24,10 @@ class Pessoa:
         return self.oculos
     def setOculos(self, new):
         self.oculos = new
-    
         
+    def too_string(self):
+        return f""" Nome: {self.nome}\n
+                    Cpf: {self.cpf}\n
+                    Data de nascimento:{self.nascimento}\n
+                    Oculos: {self.oculos}\n
+                    """
