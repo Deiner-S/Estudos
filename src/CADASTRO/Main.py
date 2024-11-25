@@ -13,8 +13,9 @@ def main():
         
     button_container.pack(padx=24,pady=(0,16))
     tk.Button(button_container,text="Cadastro de pessoas",command=cadastro.cadastro).grid(padx=8,pady=8,ipadx=10,ipady=2)    
-     
-    table.tabela(main_window)
+    info = "456.789.012-33"
+
+    table.tabela(main_window,info)
 
             
 

@@ -12,7 +12,7 @@ import sqlite3 as conexao
 class DAO(ABC):    
     primaryKey = ""
     tabela = ""    
-    conexao = conexao.connect("./data_base.db", detect_types=conexao.PARSE_DECLTYPES) 
+    conexao = conexao.connect("src\CADASTRO\DAO\data.db", detect_types=conexao.PARSE_DECLTYPES) 
     cursor = conexao.cursor()
                     
     #   
@@ -28,7 +28,7 @@ class DAO(ABC):
     #  
     def read(self,cod):
         try:
-            comando = f"SELECT * FROM {self.tabela} WHERE {self.primaryKey} = '{cod}' "
+            comando = f"""SELECT * FROM {self.tabela} WHERE {self.primaryKey} = '{cod}' """
             self.cursor.execute(comando)
             return self.cursor.fetchall()        
         except Exception as e:

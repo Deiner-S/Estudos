@@ -1,9 +1,10 @@
 class Pessoa:
-    def __init__(self,cpf, nome, nascimento, oculos):
+    def __init__(self,cpf, nome,endereco,data_cadastro,ultima_compra ):
         self.cpf = cpf
         self.nome = nome
-        self.nascimento = nascimento
-        self.oculos = oculos
+        self.endereco =endereco 
+        self.data_cadastro = data_cadastro
+        self.ultima_compra = ultima_compra 
     
     def getCPF(self):
         return self.cpf
@@ -15,19 +16,19 @@ class Pessoa:
     def setNome(self, new):
         self.nome = new
     
-    def getNascimento(self):
-        return self.nascimento
-    def setNascimento(self, new):
-        self.nascimento = new
+    def get_endereco(self):
+        return self.endereco
+    def set_endereco(self, new):
+        self.endereco = new
     
-    def getOculos(self):
-        return self.oculos
-    def setOculos(self, new):
-        self.oculos = new
-        
-    def too_string(self):
-        return f""" Nome: {self.nome}\n
-                    Cpf: {self.cpf}\n
-                    Data de nascimento:{self.nascimento}\n
-                    Oculos: {self.oculos}\n
-                    """
+    def get_data_cadastro(self):
+        return self.data_cadastro
+    def set_data_cadastro(self, new):
+        self.data_cadastro = new
+    
+    def get_ultima_compra(self):
+        return self.ultima_compra
+    def set_ultima_compra(self, new):
+        self.ultima_compra = new
+    
+    

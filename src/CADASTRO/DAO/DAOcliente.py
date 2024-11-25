@@ -1,12 +1,12 @@
 from DAO.DAOabc import DAO
 
-class DAOpessoa(DAO):
+class DAOcliente(DAO):
     primaryKey = "cpf"
-    tabela = "Pessoa"        
+    tabela = "Cliente"        
     
     def create(self,obj):
         try:
-            comando = f"""INSERT INTO Pessoa VALUES (:cpf, :nome, :nascimento, :oculos);"""        
+            comando = f"""INSERT INTO Pessoa VALUES (:cpf, :nome, :endereco, :data_cadastro, :utima_compra);"""        
             self.cursor.execute(comando, vars(obj))
             self.conexao.commit()
             print("Cadastrado com sucesso!")
